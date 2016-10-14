@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rdp-N8-rY3" id="Ji2-7q-0J9">
-                                            <frame key="frameInset" width="375" height="179"/>
+                                            <frame key="frameInset" width="375" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWk-pC-pU5">
@@ -67,20 +67,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqt-eT-om1">
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqt-eT-om1">
                                 <frame key="frameInset" minY="81" width="375" height="301"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4Gq-pV-W8T" appends="YES" id="WPm-07-Pc7"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="photoView" destination="Jqt-eT-om1" id="ZB5-bM-qOe"/>
+                        <segue destination="Dmw-Pr-aAo" kind="presentation" identifier="showFullScreen" id="Lm7-TL-I5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KOG-Sk-okt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Gq-pV-W8T">
+                    <connections>
+                        <action selector="onTapPhoto:" destination="jnr-xB-G5b" id="o4Q-ww-ZUs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1485.5999999999999" y="121.88905547226388"/>
+        </scene>
+        <!--Full Screen View Controller-->
+        <scene sceneID="QIx-2e-sxX">
+            <objects>
+                <viewController id="Dmw-Pr-aAo" customClass="FullScreenViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Orv-ac-1dM"/>
+                        <viewControllerLayoutGuide type="bottom" id="JhR-86-YUE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DYm-ci-Mz7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="shJ-Ub-WFM">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebO-3O-BkJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoView" destination="ebO-3O-BkJ" id="ieZ-Cu-riL"/>
+                        <outlet property="scrollView" destination="shJ-Ub-WFM" id="dhm-kM-pV3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pba-fG-ZLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2224.8000000000002" y="121.88905547226388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P2w-g9-HCg">

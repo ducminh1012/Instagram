@@ -1,29 +1,25 @@
 //
-//  PhotoDetailsViewController.swift
+//  FullScreenViewController.swift
 //  Instagram
 //
-//  Created by Kyou on 10/12/16.
+//  Created by Kyou on 10/13/16.
 //  Copyright © 2016 Kyou. All rights reserved.
 //
 
 import UIKit
 
-class PhotoDetailsViewController: UIViewController {
-    @IBAction func onTapPhoto(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "showFullScreen", sender: nil)
-    }
+class FullScreenViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var photoView: UIImageView!
-    
-    var photoUrl = ""
+    var photo = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scrollView.delegate = self
         // Do any additional setup after loading the view.
-        
-        photoView.setImageWith(URL(string: photoUrl)!)
-        
+        photoView.image = photo
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,17 +28,20 @@ class PhotoDetailsViewController: UIViewController {
     }
     
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        let fullScreenVC = segue.destination as! FullScreenViewController
-        fullScreenVC.photo = photoView.image!
     }
-    
+    */
 
+}
+
+extension FullScreenViewController: UIScrollViewDelegate{
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return photoView
+    }
 }
